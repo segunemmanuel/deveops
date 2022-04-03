@@ -22,6 +22,8 @@ class Posts extends Model
         return $this->hasMany(Comments::class, 'post_id', 'id');
     }
 
+
+
     /**
      * Get all of the upvo for the Posts
      *

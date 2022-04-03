@@ -18,7 +18,6 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('link');
-            $table->integer('upvotes');
             $table->string('post_author_name');
             $table->timestamps();
         });

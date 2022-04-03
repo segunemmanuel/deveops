@@ -20,7 +20,7 @@ class PostsResource extends JsonResource
            'attributes'=> [
                'name'=>$this->title,
                'link'=>$this->link,
-               'upvotes'=>$this->votes,
+               'Amount of upvotes'=>$this->votes,
                'comments'=>$this->comments,
                'post_author_name'=>$this->post_author_name,
                'created_at'=>$this->created_at,

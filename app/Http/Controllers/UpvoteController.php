@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostsResource;
+use App\Http\Resources\UpvoteResource;
 use App\Models\Posts;
 use App\Models\Upvotes;
-
-use App\Http\Resources\PostsResource;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class UpvoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,10 @@ class PostController extends Controller
     public function index()
     {
         //
-        return PostsResource::collection(Posts::all());
+        // return new UpvoteResource()\
+
+        // return UpvoteResource::collection(Upvotes::all());
+        return UpvoteResource::collection(Upvotes::all());
 
     }
 
@@ -41,43 +44,39 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        return "Yes";
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  App\Models\Posts;
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Posts $posts)
-    {
-                return new Postsresource($posts);
+    // public function show(Upvotes $upvote)
+    // {
+    //     //
+    //     return new UpvoteResource($upvote);
+    // }
 
-    }
 
 
-/**
-     * Display the specified resource and vote .
+      /**
+     * Display the specified resource.
      *
-     * @param  App\Models\Posts;
-     *
+     * @string App\Posts $posts
      * @return \Illuminate\Http\Response
      */
-    public function vote(Posts $posts)
+    public function show(Upvotes $upvote)
     {
-                // return new Postsresource($posts);
 
-                $upvote=Upvotes::all()->toJson(1);
-                $posts=Posts::all()->toJson(1);
+        // new Posts();
+$find_v=Upvotes::where('post_id',$upvote)->first();
+// return $find_v->tojson();
+return new PostsResource($find_v);
+// SELECT From upvote wjhere post_id ==1
 
     }
-
-
-
-
-
-
     /**
      * Show the form for editing the specified resource.
      *
